@@ -16,7 +16,7 @@ public class Aspirador {
     public static void main(String[] args) {
 //Declarar variables
 //Variables INT
-        int opcion;
+        int opcion, contador = 0;
 //Variables boolean
         boolean repetir = true;
 //Blucle Do Wile, que se repite  todo el programa o finaliza el programa si el valor repetir es false
@@ -24,6 +24,7 @@ public class Aspirador {
 //Bucle Do While,Que se repite si introduces un valor que no esté dentro del menú
             do {
 //Menú donde eligiremos la opción que deseamos realizar 
+                contador++;
                 String opcionString = JOptionPane.showInputDialog(null, "Seleccione la opción deseada:\n"
                         + "1-Configurar el Sistema\n"
                         + "2-Carga\n"
@@ -35,7 +36,16 @@ public class Aspirador {
 
 //Convertir el valor String anterior a un valor Int
                 opcion = Integer.parseInt(opcionString);
+
             } while (opcion < 0 || opcion > 6);
+            
+//If para obligar a Configurar el sistema la primera vez que iniciemos el programa
+            if (opcion != 1 && contador == 1) {
+                JOptionPane.showMessageDialog(null, "Debes Configurar el Sistema antes de poder elegir otra opción");
+            //Te reidirije a la opcion uno
+                opcion = 1;
+           
+            }
 
         } while (repetir);
 //Mensaje que se muestra al finalizar el programa
