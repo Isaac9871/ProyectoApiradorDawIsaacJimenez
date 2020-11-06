@@ -5,6 +5,7 @@
  */
 package proyectoaspiradordawisaac;
 
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +15,8 @@ import javax.swing.JOptionPane;
 public class Aspirador {
 
     public static void main(String[] args) {
+//Con este objeto limitamos los decimales del resultado en solo 2 decimales
+        DecimalFormat formato = new DecimalFormat("#.##");
 //Declarar Constante
         final int CANTCUARTOS = 5;
 
@@ -24,7 +27,7 @@ public class Aspirador {
         boolean repetir = true;
 
         //Variables Double
-        double metros, total, carga, banio = 0, salon = 0, cocina = 0, dormi = 0, dormi2 = 0;
+        double metros, total, carga = 0, banio = 0, salon = 0, cocina = 0, dormi = 0, dormi2 = 0;
 
 //Variables String
         String texto = "";
@@ -65,21 +68,21 @@ public class Aspirador {
                         contador2++;
 //Aparecerá segun el orden del contador y añadiremos el tamaño a cada uno                        
                         switch (contador2) {
-                            case 1:
-                                texto = "el cuarto de baño";
-                                break;
-                            case 2:
-                                texto = "la cocina";
-                                break;
-                            case 3:
-                                texto = "el salón";
-                                break;
-                            case 4:
-                                texto = "el dormitorio 1";
-                                break;
-                            case 5:
-                                texto = "el dormitorio 2";
-                                break;
+                                            case 1:
+                                                texto = "el cuarto de baño";
+                                                break;
+                                            case 2:
+                                                texto = "la cocina";
+                                                break;
+                                            case 3:
+                                                texto = "el salón";
+                                                break;
+                                            case 4:
+                                                texto = "el dormitorio 1";
+                                                break;
+                                            case 5:
+                                                texto = "el dormitorio 2";
+                                                break;
                         }
 
 //Bucle para limitar los metros en cada cuarto
@@ -89,22 +92,22 @@ public class Aspirador {
 //Convertir el valor String a un valor Double
                             metros = Double.parseDouble(metrosString);
 //Switch que guarda los metros cuadrados de cada cuarto en especifico
-                            switch (contador2) {
-                                case 1:
-                                    banio = metros;
-                                    break;
-                                case 2:
-                                    cocina = metros;
-                                    break;
-                                case 3:
-                                    salon = metros;
-                                    break;
-                                case 4:
-                                    dormi = metros;
-                                    break;
-                                case 5:
-                                    dormi2 = metros;
-                                    break;
+                                            switch (contador2) {
+                                                case 1:
+                                                    banio = metros;
+                                                    break;
+                                                case 2:
+                                                    cocina = metros;
+                                                    break;
+                                                case 3:
+                                                    salon = metros;
+                                                    break;
+                                                case 4:
+                                                    dormi = metros;
+                                                    break;
+                                                case 5:
+                                                    dormi2 = metros;
+                                                    break;
                             }
 //Calculo de los metros total de toda la casa
                             total = banio + cocina + salon + dormi + dormi2;
@@ -148,6 +151,22 @@ public class Aspirador {
                     break;
 
                 case 6:
+                    JOptionPane.showMessageDialog(null, "Colocandose en la base de carga ");
+//Bucle que carga la bateria de la aspiradora hasta 100%
+                    while (carga < 100) {
+//Velocidad a la que se carga la batería
+                        carga = carga + 1 + (carga * 40) / 100;
+//If que en el caso que sobrepase el 100% lo pondrá en 100 
+                        if (carga > 100) {
+                            carga = 100;
+                        }
+//Mensaje que se muestra cada vez que se repite el bucle y muestra la batería en ese momento
+                        JOptionPane.showMessageDialog(null, "Batería actual: " + formato.format(carga) + " % ");
+                    }
+//Mensaje cuando la batería esta totalmente cargada
+                    if (carga == 100) {
+                        JOptionPane.showMessageDialog(null, "La bateria esta totalmente cargada");
+                    }
                     break;
 
                 case 0:
