@@ -49,12 +49,12 @@ public class Aspirador {
             } while (opcion < 0 || opcion > 6);
 
 //If para obligar a Configurar el sistema la primera vez que iniciemos el programa
-            if (opcion != 1 && contador == 1) {
+            if (opcion > 1 && contador == 1) {
                 JOptionPane.showMessageDialog(null, "Debes Configurar el Sistema antes de poder elegir otra opción");
                 //Te reidirije a la opcion uno
                 opcion = 1;
 
-            }
+            } 
 //Switch para realizar las acciones del menú anterior
             switch (opcion) {
 //Case 1 es el de configurar el Sistema, donde estableceremos los metros de las habitaciones
@@ -89,7 +89,7 @@ public class Aspirador {
 //Convertir el valor String a un valor Double
                             metros = Double.parseDouble(metrosString);
 //Switch que guarda los metros cuadrados de cada cuarto en especifico
-                            switch (contador) {
+                            switch (contador2) {
                                 case 1:
                                     banio = metros;
                                     break;
@@ -114,9 +114,12 @@ public class Aspirador {
                             }
 
                         } while (metros < 1 || metros > 100);
-                    } while (contador != CANTCUARTOS);
+                    } while (contador2 != CANTCUARTOS);
+
 //Mensaje que muestra el tamaño total de toda la casa
-                    JOptionPane.showMessageDialog(null, "Las " + contador + " habitaciones tienen un tamaño total de " + total + " m^2");
+                    JOptionPane.showMessageDialog(null, "Las " + contador2 + " habitaciones tienen un tamaño total de " + total + " m^2");
+//Para que se resté el contador 2
+                    contador2 = 0;
 
                     break;
 
@@ -135,6 +138,8 @@ public class Aspirador {
                     break;
 
                 case 0:
+//Me permite salir del bucle y finalizar el programa
+                    repetir = false;
                     break;
 
             }
