@@ -22,7 +22,7 @@ public class Aspirador {
 
 //Declarar variables
 //Variables INT
-        int opcion, contador = 0, contador2 = 0;
+        int opcion, contador = 0, contador2 = 0, aspirar;
 //Variables boolean
         boolean repetir = true;
 
@@ -68,21 +68,21 @@ public class Aspirador {
                         contador2++;
 //Aparecerá segun el orden del contador y añadiremos el tamaño a cada uno                        
                         switch (contador2) {
-                                            case 1:
-                                                texto = "el cuarto de baño";
-                                                break;
-                                            case 2:
-                                                texto = "la cocina";
-                                                break;
-                                            case 3:
-                                                texto = "el salón";
-                                                break;
-                                            case 4:
-                                                texto = "el dormitorio 1";
-                                                break;
-                                            case 5:
-                                                texto = "el dormitorio 2";
-                                                break;
+                            case 1:
+                                texto = "el cuarto de baño";
+                                break;
+                            case 2:
+                                texto = "la cocina";
+                                break;
+                            case 3:
+                                texto = "el salón";
+                                break;
+                            case 4:
+                                texto = "el dormitorio 1";
+                                break;
+                            case 5:
+                                texto = "el dormitorio 2";
+                                break;
                         }
 
 //Bucle para limitar los metros en cada cuarto
@@ -92,22 +92,22 @@ public class Aspirador {
 //Convertir el valor String a un valor Double
                             metros = Double.parseDouble(metrosString);
 //Switch que guarda los metros cuadrados de cada cuarto en especifico
-                                            switch (contador2) {
-                                                case 1:
-                                                    banio = metros;
-                                                    break;
-                                                case 2:
-                                                    cocina = metros;
-                                                    break;
-                                                case 3:
-                                                    salon = metros;
-                                                    break;
-                                                case 4:
-                                                    dormi = metros;
-                                                    break;
-                                                case 5:
-                                                    dormi2 = metros;
-                                                    break;
+                            switch (contador2) {
+                                case 1:
+                                    banio = metros;
+                                    break;
+                                case 2:
+                                    cocina = metros;
+                                    break;
+                                case 3:
+                                    salon = metros;
+                                    break;
+                                case 4:
+                                    dormi = metros;
+                                    break;
+                                case 5:
+                                    dormi2 = metros;
+                                    break;
                             }
 //Calculo de los metros total de toda la casa
                             total = banio + cocina + salon + dormi + dormi2;
@@ -142,6 +142,26 @@ public class Aspirador {
                     break;
 
                 case 3:
+//If que no permite el acceso al case 3 si no tiene el aspirador más de 3% de bateria
+                    if (carga <= 3) {
+//Mensaje que informa en el caso de que no puedas acceder
+                        JOptionPane.showMessageDialog(null, "No tiene suficiente batería para poder realizar ninguna acción, carga la batería antes ");
+                    } else {
+//Bucle que se repitirá en el caso de no introducir un valor valido
+                        do {
+//Menú del case 3 donde podremos elegir los dos modos difetentes que podemos realizar (Introducir un valor String)
+                            String aspiracionString = JOptionPane.showInputDialog(null, "Seleccione la opción deseada:\n"
+                                    + "1-Modo Completo\n"
+                                    + "2-Modo Dependencias\n");
+//Cambiar el valor String anterior a un valor Int
+                            aspirar = Integer.parseInt(aspiracionString);
+//If que nos muestra un mensaje en el caso de que el valor introducido no sea valido
+                            if (aspirar < 1 || aspirar > 2) {
+                                JOptionPane.showMessageDialog(null, "Valor no valido..");
+                            }
+                        } while (aspirar < 1 || aspirar > 2);
+
+                    }
                     break;
 
                 case 4:
