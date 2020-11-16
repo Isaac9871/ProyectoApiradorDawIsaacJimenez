@@ -47,12 +47,18 @@ public class Aspirador {
                 carga = 0;
         
 //Variables String
-        String texto = "", lugar = "",contraseña="daw.exe",contraseñaString="";
+        String texto = "", lugar = "",contraseña="daw.exe",contraseñaString="",usuario="isaac",usuarioString="";
 //Blucle Do Wile, que se repite  todo el programa o finaliza el programa si el valor repetir es false
+
+//Bucle do-While que se repite hasta que se introduzca el usuario correcto
+do{
+   usuarioString = JOptionPane.showInputDialog(null, "Usuario:" );
+   
+}while(!usuario.equals(usuarioString));
 
 //Bucle do-While que se repite hasta que se introduzca la contraseña correcta
 do{
-   contraseñaString = JOptionPane.showInputDialog(null, "Introduce la contraseña:" );
+   contraseñaString = JOptionPane.showInputDialog(null, "Contraseña:" );
    
 }while(!contraseña.equals(contraseñaString));
 
