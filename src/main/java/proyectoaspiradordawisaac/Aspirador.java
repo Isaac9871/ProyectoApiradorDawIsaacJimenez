@@ -33,7 +33,7 @@ public class Aspirador {
         int //Variables para el Menú Inicial
                 opcion, contador = 0,
                 //Variables del case 1
-                contador2 = 0,metros, total = 0, banio = 0, salon = 0, cocina = 0, dormi = 0, dormi2 = 0,
+                contador2 = 0, metros, total = 0, banio = 0, salon = 0, cocina = 0, dormi = 0, dormi2 = 0,
                 //Variables del case 3
                 aspirar, contadorMlimpiar = 0, aspirarElegir, dosHabi = 0, tresHabi = 0, cuatroHabi = 0, cincoHabi = 0,
                 //Variables del case 4
@@ -42,25 +42,25 @@ public class Aspirador {
                 estado, contadorLugar = 0;
 
 //Variables Double  
-     double 
-                //Variables del case 2  
+        double //Variables del case 2  
                 carga = 0;
-        
+//Constante String
+        final String USUARIO = "isaac", CONTRASEÑA = "daw.exe";
 //Variables String
-        String texto = "", lugar = "",contraseña="daw.exe",contraseñaString="",usuario="isaac",usuarioString="";
+        String texto = "", lugar = "", contraseñaString = "", usuarioString = "";
 //Blucle Do Wile, que se repite  todo el programa o finaliza el programa si el valor repetir es false
 
 //Bucle do-While que se repite hasta que se introduzca el usuario correcto
-do{
-   usuarioString = JOptionPane.showInputDialog(null, "Usuario:" );
-   
-}while(!usuario.equals(usuarioString));
+        do {
+            usuarioString = JOptionPane.showInputDialog(null, "Usuario:");
+
+        } while (!USUARIO.equals(usuarioString));
 
 //Bucle do-While que se repite hasta que se introduzca la contraseña correcta
-do{
-   contraseñaString = JOptionPane.showInputDialog(null, "Contraseña:" );
-   
-}while(!contraseña.equals(contraseñaString));
+        do {
+            contraseñaString = JOptionPane.showInputDialog(null, "Contraseña:");
+
+        } while (!CONTRASEÑA.equals(contraseñaString));
 
         do {
 //Bucle Do While,Que se repite si introduces un valor que no esté dentro del menú
@@ -337,7 +337,7 @@ do{
 
                                         case 1:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=banio;
+                                            contadorLugar = banio;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración                
                                             if (carga < (banio * CARGAXMETRO)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar el Baño\n"
@@ -349,7 +349,6 @@ do{
                                                 JOptionPane.showMessageDialog(null, "Aspirando el Baño");
                                                 JOptionPane.showMessageDialog(null, "El Baño ha sido Apirado.\n"
                                                         + "Bateria restante " + carga + " % ");
-                                               
 
                                             }
 
@@ -357,7 +356,7 @@ do{
 
                                         case 2:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=dosHabi;
+                                            contadorLugar = dosHabi;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
                                             if (carga < (cocina * CARGAXMETRO)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar la Cocina\n"
@@ -368,7 +367,6 @@ do{
                                                 JOptionPane.showMessageDialog(null, "Aspirando La cocina");
                                                 JOptionPane.showMessageDialog(null, "La cocina ha sido Apirado.\n"
                                                         + "Bateria restante " + carga + " % ");
-                                                
 
                                             }
 
@@ -376,7 +374,7 @@ do{
 
                                         case 3:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=tresHabi;
+                                            contadorLugar = tresHabi;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
                                             if (carga < (salon * CARGAXMETRO)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar el Salón\n"
@@ -387,14 +385,14 @@ do{
                                                 JOptionPane.showMessageDialog(null, "Aspirando el Salón");
                                                 JOptionPane.showMessageDialog(null, "El Salón ha sido Apirado.\n"
                                                         + "Bateria restante " + carga + " % ");
-                                                
+
                                             }
 
                                             break;
 
                                         case 4:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=cuatroHabi;
+                                            contadorLugar = cuatroHabi;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
                                             if (carga < (dormi * CARGAXMETRO)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar el Dormitorio(1)\n"
@@ -405,14 +403,14 @@ do{
                                                 JOptionPane.showMessageDialog(null, "Aspirando el Dormitorio(1)");
                                                 JOptionPane.showMessageDialog(null, "El Dormitorio(1) ha sido Apirado.\n"
                                                         + "Bateria restante " + carga + " % ");
-                                               
+
                                             }
 
                                             break;
 
                                         case 5:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=total-1;
+                                            contadorLugar = total - 1;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
                                             if (carga < (dormi2 * CARGAXMETRO)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar el Dormitorio(2)\n"
@@ -423,7 +421,7 @@ do{
                                                 JOptionPane.showMessageDialog(null, "Aspirando el Dormitorio(2)");
                                                 JOptionPane.showMessageDialog(null, "El Dormitorio(2) ha sido Apirado.\n"
                                                         + "Bateria restante " + carga + " % ");
-                                                
+
                                             }
 
                                             break;
@@ -605,7 +603,7 @@ do{
 
                                         case 1:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=banio;
+                                            contadorLugar = banio;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración                
                                             if (carga < (banio * CARGAXMETRO2)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar y Fregar el Baño\n"
@@ -624,7 +622,7 @@ do{
 
                                         case 2:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=dosHabi;
+                                            contadorLugar = dosHabi;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
                                             if (carga < (cocina * CARGAXMETRO2)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar y Fregar la Cocina\n"
@@ -642,7 +640,7 @@ do{
 
                                         case 3:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=tresHabi;
+                                            contadorLugar = tresHabi;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
                                             if (carga < (salon * CARGAXMETRO2)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar y Fregar el Salón\n"
@@ -660,7 +658,7 @@ do{
 
                                         case 4:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                            contadorLugar=cuatroHabi;
+                                            contadorLugar = cuatroHabi;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
                                             if (carga < (dormi * CARGAXMETRO2)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar y Fregar el Dormitorio(1)\n"
@@ -678,7 +676,7 @@ do{
 
                                         case 5:
 //Para saber que habitación esta la aspiradora (para el case 5)
-                                          contadorLugar=total-1;
+                                            contadorLugar = total - 1;
 //If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
                                             if (carga < (dormi2 * CARGAXMETRO2)) {
                                                 JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar y Fregar el Dormitorio(2)\n"
