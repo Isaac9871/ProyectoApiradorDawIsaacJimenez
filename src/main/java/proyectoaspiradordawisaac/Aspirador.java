@@ -25,14 +25,14 @@ public class Aspirador {
 //Declarar variables
 //Variables boolean
         boolean repetir = true;
-
+        boolean dependencias = true;
 //Variables INT
         int //Variables para el Menú Inicial
                 opcion, contador = 0,
                 //Variables del case 1
                 contador2 = 0,
                 //Variables del case 3
-                aspirar, contadorMlimpiar = 0;
+                aspirar, contadorMlimpiar = 0, aspirarElegir;
 
 //Variables Double
         //Variables del case 1
@@ -197,20 +197,20 @@ public class Aspirador {
                                     contadorMlimpiar++;
 //Bateria perdida por cada metro
                                     carga -= CARGAXMETRO;
-                                    
+
                                     //Para comprobar que se realizaba el bucle correctamente
-                                   // System.out.println(carga + " metros= " + contadorMlimpiar);
+                                    // System.out.println(carga + " metros= " + contadorMlimpiar);
 //If que nos muestra un mensaje en el caso de que el tamaño de la habitacion sea demasiado grande para que nuestra aspiradora pueda aspirarla    
                                     if (banio >= METROSCIENCARGA) {
 
-                                        JOptionPane.showMessageDialog(null, "La habitación es demasiado grande para que pueda limpiarlo la aspiradora.\n"
+                                        JOptionPane.showMessageDialog(null, "La habitación es demasiado grande para que pueda Aspirarlo la aspiradora.\n"
                                                 + "La aspiradora con 100% de carga, puede limpiar hasta 66m^2");
-                          //Los break fuerza la salida del bucle for
+                                        //Los break fuerza la salida del bucle for
                                         break;
                                     }
 //If en el caso que no haya bateria suficiente para limpiar el baño
-                                    if (carga < reglaTresBanio && contadorMlimpiar < banio) {
-                                        JOptionPane.showMessageDialog(null, "No hay suficiente bateria para limpiar el baño. \n"
+                                    if (carga < (banio * CARGAXMETRO) && contadorMlimpiar < banio) {
+                                        JOptionPane.showMessageDialog(null, "No hay suficiente bateria para aspirar el baño. \n"
                                                 + "Ve a la base de Carga");
                                         break;
 //If que cuando el contador sea igual a los metros del baño, aspirará todo el baño
@@ -220,7 +220,7 @@ public class Aspirador {
                                                 + "Bateria restante " + carga + " % ");
 //If que nos avisa que no hay bateria suficiente para aspirar la cocina
                                         if (carga < (CARGAXMETRO * cocina)) {
-                                            JOptionPane.showMessageDialog(null, "No hay suficiente bateria para limpiar la cocina. \n"
+                                            JOptionPane.showMessageDialog(null, "No hay suficiente bateria para aspirar la cocina. \n"
                                                     + "Ve a la base de Carga");
                                             break;
                                         }
@@ -232,7 +232,7 @@ public class Aspirador {
                                                 + "Bateria restante " + carga + " % ");
 //If que nos avisa que no hay bateria suficiente para aspirar el salon
                                         if (carga < (CARGAXMETRO * salon)) {
-                                            JOptionPane.showMessageDialog(null, "No hay suficiente bateria para limpiar el Salón. \n"
+                                            JOptionPane.showMessageDialog(null, "No hay suficiente bateria para aspirar el Salón. \n"
                                                     + "Ve a la base de Carga");
                                             break;
                                         }
@@ -245,7 +245,7 @@ public class Aspirador {
                                                 + "Bateria restante " + carga + " % ");
 //If que nos avisa que no hay bateria suficiente para limpiar el dormitorio 1
                                         if (carga < (CARGAXMETRO * dormi)) {
-                                            JOptionPane.showMessageDialog(null, "No hay suficiente bateria para limpiar el Dormitrio(1). \n"
+                                            JOptionPane.showMessageDialog(null, "No hay suficiente bateria para aspirar el Dormitrio(1). \n"
                                                     + "Ve a la base de Carga");
                                             break;
                                         }
@@ -258,7 +258,7 @@ public class Aspirador {
                                                 + "Bateria restante " + carga + " % ");
 //If que nos avisa que no hay bateria suficiente para limpiar el dormitorio 2
                                         if (carga < (CARGAXMETRO * dormi2)) {
-                                            JOptionPane.showMessageDialog(null, "No hay suficiente bateria para limpiar el Dormitorio(2). \n"
+                                            JOptionPane.showMessageDialog(null, "No hay suficiente bateria para aspirar el Dormitorio(2). \n"
                                                     + "Ve a la base de Carga");
                                             break;
                                         }
@@ -272,7 +272,7 @@ public class Aspirador {
                                     }
 //If que nos informa de que hemos limpiado todas las habitaciones
                                     if (contadorMlimpiar == total) {
-                                        JOptionPane.showMessageDialog(null, "Todas las habitaciones han sido limpiadas");
+                                        JOptionPane.showMessageDialog(null, "Todas las habitaciones han sido Aspiradas");
                                         break;
                                     }
 //If que nos avisa que la bateria se a agotado
@@ -290,6 +290,116 @@ public class Aspirador {
                                 break;
 
                             case 2:
+//Bucle que se repetirá hasta que queramos salirnos del modo dependencias
+                                do {
+//Bucle que se repite si no se introduce un valor valido
+                                    do {
+                                        //Introducir un valor String
+                                        String aspiracionElegirString = JOptionPane.showInputDialog(null, "Que habitación deseas Aspirar\n"
+                                                + "1-El baño\n"
+                                                + "2-La cocina\n"
+                                                + "3-El salón\n"
+                                                + "4-El dormitorio (1)\n"
+                                                + "5-El dormitorio (2)\n"
+                                                + "0-Salir del Modo dependencias");
+//Convertir el valor Strin anterior en un Valor Int
+                                        aspirarElegir = Integer.parseInt(aspiracionElegirString);
+//If que nos muestra un mensaje si el valor anterior no es valido
+                                        if (aspirarElegir < 0 || aspirarElegir > 5) {
+                                            JOptionPane.showMessageDialog(null, "Valor no valido");
+                                        }
+                                    } while (aspirarElegir < 0 || aspirarElegir > 5);
+
+//Switch que nos realizará el acción según lo que eligamos
+                                    switch (aspirarElegir) {
+
+                                        case 1:
+//If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración                
+                                            if (carga < (banio * CARGAXMETRO)) {
+                                                JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar el Baño\n"
+                                                        + "Ve a la base de Carga");
+//Boolean que nos permite salirnos del bucle do-while
+                                                dependencias = false;
+                                            } else {
+                                                carga = carga - (banio * CARGAXMETRO);
+                                                JOptionPane.showMessageDialog(null, "Aspirando el Baño");
+                                                JOptionPane.showMessageDialog(null, "El Baño ha sido Apirado.\n"
+                                                        + "Bateria restante " + carga + " % ");
+
+                                            }
+
+                                            break;
+
+                                        case 2:
+//If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
+                                            if (carga < (cocina * CARGAXMETRO)) {
+                                                JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar la Cocina\n"
+                                                        + "Ve a la base de Carga");
+                                                dependencias = false;
+                                            } else {
+                                                carga = carga - (banio * CARGAXMETRO);
+                                                JOptionPane.showMessageDialog(null, "Aspirando La cocina");
+                                                JOptionPane.showMessageDialog(null, "La cocina ha sido Apirado.\n"
+                                                        + "Bateria restante " + carga + " % ");
+
+                                            }
+
+                                            break;
+
+                                        case 3:
+//If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
+                                            if (carga < (salon * CARGAXMETRO)) {
+                                                JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar el Salón\n"
+                                                        + "Ve a la base de Carga");
+                                                dependencias = false;
+                                            } else {
+                                                carga = carga - (banio * CARGAXMETRO);
+                                                JOptionPane.showMessageDialog(null, "Aspirando el Salón");
+                                                JOptionPane.showMessageDialog(null, "El Salón ha sido Apirado.\n"
+                                                        + "Bateria restante " + carga + " % ");
+
+                                            }
+
+                                            break;
+
+                                        case 4:
+//If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
+                                            if (carga < (dormi * CARGAXMETRO)) {
+                                                JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar el Dormitorio(1)\n"
+                                                        + "Ve a la base de Carga");
+                                                dependencias = false;
+                                            } else {
+                                                carga = carga - (banio * CARGAXMETRO);
+                                                JOptionPane.showMessageDialog(null, "Aspirando el Dormitorio(1)");
+                                                JOptionPane.showMessageDialog(null, "El Dormitorio(1) ha sido Apirado.\n"
+                                                        + "Bateria restante " + carga + " % ");
+
+                                            }
+
+                                            break;
+
+                                        case 5:
+//If que nos aisa si no tenemos sificiente bateria para aspirar la habitacion y el else, realiza la aspiración      
+                                            if (carga < (dormi2 * CARGAXMETRO)) {
+                                                JOptionPane.showMessageDialog(null, "No tienes suficiente bateria para Aspirar el Dormitorio(2)\n"
+                                                        + "Ve a la base de Carga");
+                                                dependencias = false;
+                                            } else {
+                                                carga = carga - (banio * CARGAXMETRO);
+                                                JOptionPane.showMessageDialog(null, "Aspirando el Dormitorio(2)");
+                                                JOptionPane.showMessageDialog(null, "El Dormitorio(2) ha sido Apirado.\n"
+                                                        + "Bateria restante " + carga + " % ");
+
+                                            }
+
+                                            break;
+//El case o nos permite salirne del bucle do-While
+                                        case 0:
+                                            dependencias = false;
+
+                                            break;
+                                    }
+                                } while (dependencias);
                                 break;
                         }
 
